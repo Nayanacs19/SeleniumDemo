@@ -3,6 +3,7 @@ package driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -12,8 +13,7 @@ public final class DriverFactory {
     public static WebDriver getDriver(String browser) {
         WebDriver driver;
         if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver","C:\\Users\\nayan\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
-            driver = new ChromeDriver();
+             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("edge")) {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();

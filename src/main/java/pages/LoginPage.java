@@ -31,16 +31,16 @@ public class LoginPage {
     }
 
     private HomePage setLogin() {
-        click(BTN_LOGIN, String.valueOf(WaitStrategy.PRESENT));
+        click(BTN_LOGIN, WaitStrategy.PRESENT.getWaitStrategy());
         return new HomePage();
     }
 
     private void clickLogin() {
-        click(BTN_LOGIN, String.valueOf(WaitStrategy.PRESENT));
+        click(BTN_LOGIN,WaitStrategy.PRESENT.getWaitStrategy());
     }
 
     private ResetPasswordPage clickForgotPassword() {
-        click(FORGOT_PASSWORD, String.valueOf(WaitStrategy.CLICKABLE));
+        click(FORGOT_PASSWORD, WaitStrategy.CLICKABLE.getWaitStrategy());
         return new ResetPasswordPage();
     }
     private String getInvalidCredentialMessage(){

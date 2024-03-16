@@ -10,12 +10,14 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class SeleniumUtils {
 
     public static void click(By by, String waitStrategy){
-        if (waitStrategy.equalsIgnoreCase(String.valueOf(WaitStrategy.PRESENT))) {
+        if (waitStrategy.equalsIgnoreCase(WaitStrategy.PRESENT.getWaitStrategy())) {
             waitUntilElementPresent(by).click();
-        } else if (waitStrategy.equalsIgnoreCase(String.valueOf(WaitStrategy.CLICKABLE))) {
+        } else if (waitStrategy.equalsIgnoreCase(WaitStrategy.CLICKABLE.getWaitStrategy())) {
             waitUntilElementToBeClickable(by).click();
         }
     }
@@ -23,11 +25,11 @@ public class SeleniumUtils {
         waitUntilElementPresent(by).sendKeys(value);
     }
     private static WebElement waitUntilElementPresent(By by) {
-        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), ConfigFactory.getConfig().timeOut());
+        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(ConfigFactory.getConfig().timeOut()));
        return wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
     private static WebElement waitUntilElementToBeClickable(By by){
-        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), ConfigFactory.getConfig().timeOut());
+        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(ConfigFactory.getConfig().timeOut()));
         return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
     public static String getTitle(By by){

@@ -17,7 +17,6 @@ public class TestListeners implements ITestListener {
                 .getConstructorOrMethod().getMethod()
                 .getAnnotation(FrameworkAnnotations.class).author());
     }
-
     @Override
     public void onTestSuccess(ITestResult result) {
         try {
